@@ -82,4 +82,9 @@ def index():
     </html>
     '''
 
+
+subprocess.run('sudo apt-get update', shell=True)
+subprocess.run('sudo apt-get install imagemagick', shell=True)
+subprocess.run('echo "" | sudo tee /etc/ImageMagick-*/policy.xml >/dev/null', shell=True)
+
 app.run()
