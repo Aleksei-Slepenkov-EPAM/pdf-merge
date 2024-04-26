@@ -1,8 +1,11 @@
-#!pip -q install Flask
+import subprocess
+import sys
+
+subprocess.run([sys.executable, "-m", "pip", "install", "flask"])
+
 
 from flask import Flask, render_template, request, send_file
 from datetime import datetime
-import subprocess
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
@@ -28,7 +31,6 @@ def process():
 @app.route("/")
 def index():
     # Define the output file name with datetime
-    #subprocess.run('echo '' | sudo tee /etc/ImageMagick-*/policy.xml >/dev/null')
     return '''
     <html>
       <head>
@@ -84,7 +86,7 @@ def index():
 
 
 subprocess.run('sudo apt-get update', shell=True)
-subprocess.run('sudo apt-get install imagemagick', shell=True)
+subprocess.run('sudo apt-get install -y imagemagick', shell=True)
 subprocess.run('echo "" | sudo tee /etc/ImageMagick-*/policy.xml >/dev/null', shell=True)
 
 app.run()
